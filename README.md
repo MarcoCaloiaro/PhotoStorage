@@ -10,4 +10,6 @@ The solution proposed uses the following Android tech stack/libraries:
 - Coroutines/Flows for asynchronous operations. 
 
 For the sack of simplicity and to keep it shorter in terms of time, the UI is quite simple, and no personalized launcher icons/app icons have been submitted. 
-No unit tests have been provided, and no error handling has been provided to keep the project lite. 
+No unit tests have been provided, and no error handling has been provided to keep the project lite.
+
+Link to download APK: https://we.tl/t-3R7uDE3Ln8
