@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PhotoStorage</string>
+    <string name="storage_permission_rationale_text">You need to grant storage permission for fetching images :)</string>
+    <string name="permissions_missing_alert">You did not grant us the permission required for fetching images.</string>
+    <string name="permission_request">Permission request</string>
+    <string name="grant_permission_action">Grant permission</string>
+    <string name="permission_settings_action">Go to settings</string>
+</resources>
