@@ -23,20 +23,24 @@ class PhotoFetchManager @Inject constructor(
             MediaStore.Images.Media.DATE_ADDED + " DESC"
         )
 
-        return withContext(Dispatchers.IO) {
-            while (imagesCursor != null && imagesCursor.moveToNext()) {
-                val id =
-                    imagesCursor.getLong(
-                        imagesCursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
-                    )
-                val photoUri =
-                    imagesCursor.getString(
-                        imagesCursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-                    )
-                photoUri?.let { imagesList.add(LocalPhoto(photoUri, id.toInt())) }
+        if (imagesCursor != null) {
+            return withContext(Dispatchers.IO) {
+                while (imagesCursor.moveToNext()) {
+                    val id =
+                        imagesCursor.getLong(
+                            imagesCursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
+                        )
+                    val photoUri =
+                        imagesCursor.getString(
+                            imagesCursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                        )
+                    photoUri?.let { imagesList.add(LocalPhoto(photoUri, id.toInt())) }
+                }
+                imagesCursor?.close()
+                return@withContext imagesList
             }
-            imagesCursor?.close()
-            return@withContext imagesList
+        } else {
+            return imagesList
         }
     }
 
